@@ -27,14 +27,19 @@ extern "C" {
 #endif
 
 #ifdef WIN32
-#  ifdef libmosquitto_common_EXPORTS
-#    define libmosqcommon_EXPORT __declspec(dllexport)
+#  ifndef LIBMOSQUITTO_COMMON_STATIC
+#    ifdef libmosquitto_common_EXPORTS
+#      define libmosqcommon_EXPORT  __declspec(dllexport)
+#    else
+#      define libmosqcommon_EXPORT  __declspec(dllimport)
+#    endif
 #  else
-#    define libmosqcommon_EXPORT  __declspec(dllimport)
+#    define libmosqcommon_EXPORT
 #  endif
 #else
 #  define libmosqcommon_EXPORT
 #endif
+
 
 #include <mosquitto/libcommon_base64.h>
 #include <mosquitto/libcommon_cjson.h>
@@ -53,4 +58,3 @@ extern "C" {
 #endif
 
 #endif
-
