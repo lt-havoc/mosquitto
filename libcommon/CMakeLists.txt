@@ -26,7 +26,7 @@ set(C_SRC
 )
 
 if(WIN32)
-	add_library(libmosquitto_common OBJECT
+	add_library(libmosquitto_common SHARED
 		${C_SRC}
 	)
 else()
@@ -71,7 +71,7 @@ if(ALLOC_MISMATCH_ABORT)
 	target_compile_definitions(libmosquitto_common PRIVATE "ALLOC_MISMATCH_ABORT")
 endif()
 
-target_compile_definitions(libmosquitto_common PUBLIC "LIBMOSQUITTO_COMMON_STATIC")
+#target_compile_definitions(libmosquitto_common PUBLIC "LIBMOSQUITTO_COMMON_STATIC")
 
 set_target_properties(libmosquitto_common PROPERTIES
 	OUTPUT_NAME mosquitto_common
