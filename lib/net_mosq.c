@@ -527,7 +527,7 @@ static int net__try_connect_tcp(const char *host, uint16_t port, mosq_sock_t *so
 static int net__try_connect_unix(const char *host, mosq_sock_t *sock)
 {
 	struct sockaddr_un addr;
-	int s;
+	mosq_sock_t s;
 	int rc;
 
 	if(host == NULL || strlen(host) == 0 || strlen(host) > sizeof(addr.sun_path)-1){
