@@ -551,7 +551,7 @@ static int net__try_connect_unix(const char *host, mosq_sock_t *sock)
 
 	rc = connect(s, (struct sockaddr *)&addr, sizeof(struct sockaddr_un));
 	if(rc < 0){
-		close(s);
+		COMPAT_CLOSE(s);
 		return MOSQ_ERR_ERRNO;
 	}
 
